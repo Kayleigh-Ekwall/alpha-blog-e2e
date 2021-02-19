@@ -45,21 +45,14 @@ describe ("Navigation Test", () => {
     cy.url().should('include', '/articles')
   })
 
-  it.only("Visits the create new article page", () => {
+  it("Visits the create new article page", () => {
     //TODO: Setup test data before hand
     //replace this with the login command
-    //cy.factory('user', {username: 'jane', email: 'jane@email.com', password: 'janespassword123'})
+    cy.factory('user', {username: 'jane', email: 'jane@email.com', password: 'janespassword123'})
 
-    cy.signup('jane', 'jane@email.com', 'janespassword123')
+    //cy.signup('jane', 'jane@email.com', 'janespassword123')
     cy.login('jane@email.com','janespassword123')
 
-    /*cy.get('.nav-item')
-    .contains('Articles')
-    .click()
-
-    cy.get('.dropdown-menu')
-    .contains('Create new article')
-    .click()*/
     cy.visit('/articles/new')
 
     cy.url().should('include', '/articles/new')

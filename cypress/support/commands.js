@@ -39,6 +39,7 @@ Cypress.Commands.add("factory", (name, attributes) => {
   }).as('test data')
 })
 
+//currently not working
 Cypress.Commands.add('signup', (username, email, password) => {
   cy.request('POST', '/users', {
     username: username,
@@ -48,11 +49,13 @@ Cypress.Commands.add('signup', (username, email, password) => {
 })
 
 Cypress.Commands.add('login', (email, password) => {
-  cy.request('POST', '/login', {
-    email: email,
-    password: password
-  })
-
+  //TODO: change to POST request to /login, the session gets created in the app
+  //but the front end does not refresh
+  cy.visit('/login')
+  cy.get('input[type=email]').type(email)
+  cy.get('input[id=session_password]').type(password)
+  cy.get('input[type=submit]').click()
+  cy.contains('Login successful')
   cy.reload()
 })
 
