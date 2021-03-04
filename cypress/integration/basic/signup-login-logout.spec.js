@@ -9,11 +9,15 @@ describe("Signup/Login/Logout Test", () => {
     cy.get('input[type=email]').type('tester@gmail.com')
     cy.get('input[id=user_password]').type('tester123')
     cy.get('input[type=submit]').click()
-    cy.contains('Welcome to the Blog')  
+    cy.contains('Welcome to the Blog')
   })
 
   it("Login", () => {
-    cy.login('tester@gmail.com', 'tester123')
+    cy.visit('/login')
+    cy.get('input[type=email]').type('tester@gmail.com')
+    cy.get('input[id=session_password]').type('tester123')
+    cy.get('input[type=submit]').click()
+    cy.contains('Login successful')
   })
 
   it("Logout", () => {

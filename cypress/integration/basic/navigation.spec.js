@@ -46,11 +46,8 @@ describe ("Navigation Test", () => {
   })
 
   it("Visits the create new article page", () => {
-    //TODO: Setup test data before hand
-    //replace this with the login command
     cy.factory('user', {username: 'jane', email: 'jane@email.com', password: 'janespassword123'})
 
-    //cy.signup('jane', 'jane@email.com', 'janespassword123')
     cy.login('jane@email.com','janespassword123')
 
     cy.visit('/articles/new')
